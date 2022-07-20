@@ -1,6 +1,9 @@
 function App() {
   return (
-    <div>Learn React</div>
+    <> 
+      <div>Learn React</div>
+      <button>lintTest</button>
+    </>
   );
 }
 

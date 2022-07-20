@@ -1,6 +1,6 @@
 function App() {
   return (
-    <div>React TDD</div>
+    <div>Learn React</div>
   );
 }
 

@@ -1,33 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
+import Calculator from "./Calc/Calculator";
+import SummaryPage from "./pages/SummaryPage/SummaryPage";
 
 function App() {
-  const [counter, setCounter] = useState(0);
-  const [disabled, setDisabled] = useState(false);
 
   return (
     <>
-      <h3 data-testid="counter">{counter}</h3>
-      <button
-        disabled={disabled}
-        data-testid="minus-button"
-        onClick={()=>setCounter((counter) => counter - 1)}
-      >
-        -
-      </button>
-      <button
-        disabled={disabled}
-        data-testid="plus-button"
-        onClick={()=>setCounter((counter) => counter + 1)}
-      >
-        +
-      </button>
-      <button
-        style={{ backgroundColor: "blue" }}
-        data-testid="on/off-button"
-        onClick={() => setDisabled((prev) => !prev)}
-      >
-        on/off
-      </button>
+      <SummaryPage />
     </>
   );
 }

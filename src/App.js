@@ -6,6 +6,18 @@ function App() {
   return (
     <>
       <h3 data-testid="counter">{counter}</h3>
+      <button
+        data-testid="minus-button"
+        onClick={()=>setCounter((counter) => counter - 1)}
+      >
+        -
+      </button>
+      <button
+        data-testid="plus-button"
+        onClick={()=>setCounter((counter) => counter + 1)}
+      >
+        +
+      </button>
     </>
   );
 }

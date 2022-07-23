@@ -1,8 +1,11 @@
+import React, { useState } from "react";
+
 function App() {
+  const [counter, setCounter] = useState(0);
+
   return (
-    <> 
-      <div>Learn React</div>
-      <button>lintTest</button>
+    <>
+      <h3 data-testid="counter">{counter}</h3>
     </>
   );
 }

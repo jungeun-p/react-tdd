@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import App from './App';
+import Calculator from '../Calculator';
 
 test('the counter starts at 0', () => {
-  render(<App />);
+  render(<Calculator />);
   // screen obejct를 이용해서 원하는 엘레멘트에 접근
   const countElement = screen.getByTestId("counter");
   // id가 counter인 element의 텍스트가 0인지 테스트
@@ -10,7 +10,7 @@ test('the counter starts at 0', () => {
 });
 
 test('When the + button is pressed, the counter changes to 1', () => {
-  render(<App />);
+  render(<Calculator />);
   // screen object를 통해 element 접근
   const buttonElement = screen.getByTestId("plus-button");
   // click plus button
@@ -21,7 +21,7 @@ test('When the + button is pressed, the counter changes to 1', () => {
 });
 
 test('When the - button is pressed, the counter changes to -1', () => {
-  render(<App />);
+  render(<Calculator />);
   // screen object를 통해 element 접근
   const buttonElement = screen.getByTestId("minus-button");
   // click plus button
@@ -32,13 +32,13 @@ test('When the - button is pressed, the counter changes to -1', () => {
 });
 
 test("on/off button has blue color", () => {
-  render(<App />);
+  render(<Calculator />);
   const buttonElement = screen.getByTestId("on/off-button");
   expect(buttonElement).toHaveStyle({ backgroundColor: 'blue' });
 });
 
-test.only("Prevent the -,+ button from being pressed when the on/off button is clicked", () => {
-  render(<App />);
+test("Prevent the -,+ button from being pressed when the on/off button is clicked", () => {
+  render(<Calculator />);
   const onOffButtonElement = screen.getByTestId("on/off-button");
   fireEvent.click(onOffButtonElement);
   const plusButtonElement = screen.getByTestId("plus-button");

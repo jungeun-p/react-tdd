@@ -6,10 +6,10 @@ import SummaryPage from "./pages/SummaryPage/SummaryPage";
 function App() {
 
   return (
-    <>
+    <div style={{ padding: "4rem" }}>
       <OrderPage />
       <SummaryPage />
-    </>
+    </div>
   );
 }
 

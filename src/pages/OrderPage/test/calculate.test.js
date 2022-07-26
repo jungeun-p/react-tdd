@@ -1,11 +1,11 @@
-import { screen, render } from "@testing-library/react";
 import Type from "../Type"
 import userEvent from "@testing-library/user-event";
-import { OrderContextProvider } from "../../../contexts/OrderContext";
+import { render, screen } from "../../../test-utils";
 
 
 test("update product's total when products change", async () => {
-    render(<Type orderType="products" />, { wrapper: OrderContextProvider });
+    // render(<Type orderType="products" />, { wrapper: OrderContextProvider });
+    render(<Type orderType="products" />);
     // 여행 상품 가격을 0으로 시작
     const productsTotal = screen.getByText("상품 총 가격:", { exact: false });
     expect(productsTotal).toHaveTextContent("0");

@@ -1,6 +1,6 @@
 const { createContext, useState, useMemo, useEffect } = require("react");
 
-const OrderContext = createContext();
+export const OrderContext = createContext();
 
 const pricePerItem = {
     products: 1000,
@@ -41,10 +41,10 @@ export function OrderContextProvider(props){
     }, [orderCounts])
 
     const value = useMemo(() => {
-        function updateItemCount(itemName, newitemCount, orderType){
+        function updateItemCount(itemName, newItemCount, orderType){
             const newOrderCounts = { ...orderCounts};
             const orderCountsMap = orderCounts[orderType]; // option or products
-            orderCountsMap.set(itemName, parseInt(newitemCount))
+            orderCountsMap.set(itemName, parseInt(newItemCount))
             setOrderCounts(newOrderCounts);
         }
 

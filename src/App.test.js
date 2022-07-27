@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import App from "./App";
 
@@ -27,13 +27,13 @@ test("From order to order conpletion", async() => {
     });
     userEvent.click(orderButton);
 
-    // 주문 확인 페이지
+    ////////////////// 주문 확인 페이지
     // 주문 확인 페이지의 heading 
     const summaryHeading = screen.getByRole("heading", {
         name: "주문 확인",
     });
     expect(summaryHeading).toBeInTheDocument();
-    const productHeading = screen.getByRole("heading", {
+    const productHeading =  screen.getByRole("heading", {
         name: "여행 상품: 5000",
     });
     expect(productHeading).toBeInTheDocument();
@@ -58,4 +58,22 @@ test("From order to order conpletion", async() => {
         name: "주문 확인",
     });
     userEvent.click(confirmOrderButton);
+
+    /////////////////// 주문 완료 페이지
+    // loading
+    const loading = screen.getByText(/loading/i);
+    expect(loading).toBeInTheDocument();
+    // 주문 완료 처리
+    const completeHeader = await screen.findByRole("heading", {
+        name: "주문이 성공했습니다.",
+    });
+    expect(completeHeader).toBeInTheDocument();
+    // loading 사라짐
+    const loadingDisappeared = screen.queryByText("loading");
+    expect(loadingDisappeared).not.toBeInTheDocument();
+    // 돌아가기
+    const firstPageButton = screen.getByRole("button", {
+        name: "첫 페이지로",
+    });
+    userEvent.click(firstPageButton);
 });

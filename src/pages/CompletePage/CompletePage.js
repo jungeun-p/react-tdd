@@ -4,7 +4,7 @@ import ErrorBanner from '../../components/ErrorBanner';
 import { OrderContext } from '../../contexts/OrderContext';
 
 const CompletePage = ({ setStep }) => {
-    const [OrderDatas] = useContext(OrderContext);
+    const [OrderDatas, ,resetOrderDatas] = useContext(OrderContext);
     const [orderHistory, setOrderHistory] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -29,6 +29,11 @@ const CompletePage = ({ setStep }) => {
         </tr>
     ));
     
+    const handleClick = () => {
+        resetOrderDatas();
+        setStep(0);
+    }
+
     return (
         <>  
             {error && <ErrorBanner message="에러가 발생했습니다" />}
@@ -49,7 +54,7 @@ const CompletePage = ({ setStep }) => {
                         </tbody>
                     </table>
                     <br />
-                    <button onClick={() => setStep(0)}>
+                    <button onClick={handleClick}>
                         첫 페이지로
                     </button>
                 </div>

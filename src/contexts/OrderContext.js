@@ -28,6 +28,14 @@ export function OrderContextProvider(props){
         total: 0,
     });
 
+    // state 초기화
+    const resetOrderDatas = () => {
+        setOrderCounts({
+            products: new Map(),
+            options: new Map(),
+        })
+    }
+
     useEffect(() => {
         const productsTotal = calculateSubtotal('products', orderCounts);
         const optionsToal = calculateSubtotal('options', orderCounts);
@@ -48,7 +56,7 @@ export function OrderContextProvider(props){
             setOrderCounts(newOrderCounts);
         }
 
-        return [{...orderCounts, totals }, updateItemCount]; // orderDatas, updateItemCount함수
+        return [{...orderCounts, totals }, updateItemCount, resetOrderDatas]; // orderDatas, updateItemCount함수
     }, [orderCounts, totals]);
 
     return <OrderContext.Provider value={value} {...props}/>;

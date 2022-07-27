@@ -76,6 +76,13 @@ test("From order to order conpletion", async() => {
         name: "첫 페이지로",
     });
     userEvent.click(firstPageButton);
+
+    /////////////////// 첫 페이지 초기화
+    const productsTotal = screen.getByText("상품 총 가격:0");
+    expect(productsTotal).toBeInTheDocument();
+
+    const optionsTotal = screen.getByText("옵션 총 가격:0");
+    expect(optionsTotal).toBeInTheDocument();
     
     await waitFor(() => {
         screen.getByRole("spinbutton", { name: "America" });

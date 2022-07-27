@@ -38,14 +38,14 @@ const CompletePage = ({ setStep }) => {
                     <h2>주문이 성공했습니다.</h2>
                     <h3>지금까지 모든 주문</h3>
                     <table style={{ margin: "auto" }}>
-                        <tbody>
+                        <thead>
                             <tr>
                                 <th>주문 번호</th>
                                 <th>주문 가격</th>
                             </tr>
-                        <tr>
-                                {orderTable}
-                            </tr>
+                        </thead>
+                        <tbody>
+                            {orderTable}
                         </tbody>
                     </table>
                     <br />
